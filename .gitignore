@@ -69,6 +69,7 @@ Thumbs.db
 
 # Datasets and raw data (Avoid committing large data files)
 Data/metadata/
+Data/processed/
 Data/raw/
 raw_data/
 *.tsv
