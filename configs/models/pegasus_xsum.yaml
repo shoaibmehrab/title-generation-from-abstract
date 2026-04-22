@@ -1,0 +1,10 @@
+model:
+  alias: pegasus_xsum
+  hf_name: google/pegasus-xsum
+  source_max_length: 512
+  target_max_length: 24
+  generation:
+    num_beams: 8
+    max_new_tokens: 24
+    min_new_tokens: 4
+    no_repeat_ngram_size: 3

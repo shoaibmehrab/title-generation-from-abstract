@@ -1,0 +1,10 @@
+model:
+  alias: bart_large_cnn
+  hf_name: facebook/bart-large-cnn
+  source_max_length: 512
+  target_max_length: 32
+  generation:
+    num_beams: 6
+    max_new_tokens: 32
+    min_new_tokens: 4
+    no_repeat_ngram_size: 3

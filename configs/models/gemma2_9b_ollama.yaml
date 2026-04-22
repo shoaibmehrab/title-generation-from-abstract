@@ -1,0 +1,38 @@
+model:
+  alias: gemma2_9b_ollama
+  hf_name: gemma2:9b
+  prompt: "Write a concise, specific scientific paper title (<=15 words) for the abstract:"
+  source_max_length: 4096
+  target_max_length: 32
+
+llm:
+  provider: ollama
+  model: gemma2:9b
+  host: http://127.0.0.1:11434
+  timeout_seconds: 180
+  num_shots: 0
+  few_shot_seed: 42
+  few_shot_max_abstract_chars: 1200
+  max_eval_samples: 0
+  progress_every: 50
+
+  generation:
+    temperature: 0.2
+    top_p: 0.9
+    max_tokens: 40
+    repeat_penalty: 1.1
+    num_ctx: 4096
+    seed: 42
+
+  request:
+    max_retries: 2
+    retry_sleep_seconds: 2.0
+
+  quality:
+    min_words: 4
+    max_words: 15
+    semantic_similarity:
+      enabled: true
+      model_name: sentence-transformers/all-MiniLM-L6-v2
+      batch_size: 64
+      device: cpu

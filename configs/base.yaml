@@ -1,0 +1,59 @@
+project:
+  name: title-generation
+  seed: 42
+  output_root: /home/shoaib/nlp-sp26/project/outputs
+  run_name: null
+
+data:
+  schema_version: v2_titlegen
+  csv_path: /home/shoaib/nlp-sp26/project/Data/final/scientific-article-nlp.csv
+  id_column: id
+  title_column: title
+  abstract_column: abstract
+  stratify_column: primary_topic
+  min_abstract_chars: 40
+  min_title_chars: 4
+  deduplicate: true
+  split:
+    train_size: 0.8
+    val_size: 0.1
+    test_size: 0.1
+    random_state: 42
+
+model:
+  alias: flan_t5_base
+  hf_name: google/flan-t5-base
+  cache_dir: /home/shoaib/.cache/huggingface
+  prompt: "Write a concise, specific scientific paper title (<=15 words) for the abstract:"
+  source_max_length: 512
+  target_max_length: 32
+  generation:
+    num_beams: 6
+    max_new_tokens: 32
+    min_new_tokens: 4
+    no_repeat_ngram_size: 3
+
+training:
+  num_train_epochs: 3
+  learning_rate: 5e-5
+  weight_decay: 0.01
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 4
+  warmup_ratio: 0.06
+  logging_steps: 50
+  evaluation_strategy: epoch
+  save_strategy: epoch
+  save_total_limit: 2
+  metric_for_best_model: eval_rougeL
+  greater_is_better: true
+  fp16: true
+  bf16: false
+  dataloader_num_workers: 2
+
+evaluation:
+  metrics:
+    - bleu
+    - rouge
+    - bertscore
+  bertscore_lang: en
