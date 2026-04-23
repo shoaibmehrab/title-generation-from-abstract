@@ -1,4 +1,4 @@
-# Scientific Title Generation from Abstracts
+# Scientific Title Generation from Abstracts: A Comparative Study of Fine-Tuned Seq2Seq and Modern LLM Architectures
 
 This repository trains and evaluates sequence-to-sequence models that generate scientific paper titles from abstracts.
 
