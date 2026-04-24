@@ -197,7 +197,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Collect papers from OpenAlex and save raw/processed data."
     )
-    parser.add_argument("--query", default="fake news detection")
+    parser.add_argument("--query", default="natural language processing")
     parser.add_argument("--from-date", default="2020-01-01")
     parser.add_argument("--to-date", default="2026-03-31")
     parser.add_argument("--topic-id", action="append", default=[])
