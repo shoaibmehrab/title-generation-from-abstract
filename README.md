@@ -215,14 +215,14 @@ python scripts/eval_ollama_titles.py \
   --set model.num_shots=0
 ```
 
-**Llama 3 8B (few-shot, 4-shot, test)**
+**Llama 3 8B (few-shot, 4-shot, val)**
 ```bash
 python scripts/eval_ollama_titles.py \
   --base-config configs/base.yaml \
   --model-config configs/models/llama3_8b_ollama.yaml \
   --prepared-splits-run-name prep_seed42 \
-  --eval-split test \
-  --set project.run_name=llama3_8b_few4_test_seed42 \
+  --eval-split val \
+  --set project.run_name=llama3_8b_few4_val_seed42 \
   --set model.num_shots=4
 ```
 
